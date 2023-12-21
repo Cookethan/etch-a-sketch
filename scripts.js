@@ -1,5 +1,6 @@
 const sketchPad = document.querySelector('.sketchPad');
 let gridSize = 16
+let drawColor = 'black';
 
 function makeGrid(gridSize){
 
@@ -13,9 +14,14 @@ function makeGrid(gridSize){
         for(j=0; j < gridSize; j++){
         let newBox = document.createElement('div');
         newBox.classList.add('gridBox');
+        newBox.addEventListener('mouseover', fill);
         sketchPad.children[i].appendChild(newBox);
         }
     }
 }
 
-makeGrid(30);
+makeGrid(gridSize);
+
+function fill(e){
+    e.target.style.backgroundColor = drawColor;
+}
