@@ -1,6 +1,7 @@
 const sketchPad = document.querySelector('.sketchPad');
 const slider = document.querySelector('.sizeSlider');
 const sliderValue = document.querySelector('.sliderValue')
+const rainbowModeBtn = document.querySelector('.rainbow')
 let gridSize = 16
 let drawColor = 'black';
 
@@ -31,8 +32,20 @@ slider.oninput = (e) =>{
     makeGrid(gridSize)
 }
 
+rainbowModeBtn.onclick = (e) =>{
+    
+    drawColor = `rainbow`
+}
+
 function fill(e){
+    let randB = Math.floor(Math.random() * 256);
+    let randR = Math.floor(Math.random() * 256);
+    let randG = Math.floor(Math.random() * 256);
+    if(drawColor == 'rainbow'){
+        e.target.style.backgroundColor = `rgb(${randR}, ${randG}, ${randB})`
+    }else{
     e.target.style.backgroundColor = drawColor;
+    }
 }
 
 window.onload =  () =>{
